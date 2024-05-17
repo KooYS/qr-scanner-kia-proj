@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   CardTitle,
@@ -76,26 +76,28 @@ const Page = () => {
 
   if (params.get("id") && params.get("name"))
     return (
-      <div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Card className="mx-auto max-w-sm">
-            <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold">이벤트</CardTitle>
-              <CardDescription>유효시간 : {formatTime(time)}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="id">{user?.id}</Label>
+      <Suspense>
+        <div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Card className="mx-auto max-w-sm">
+              <CardHeader className="space-y-1">
+                <CardTitle className="text-2xl font-bold">이벤트</CardTitle>
+                <CardDescription>유효시간 : {formatTime(time)}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="id">{user?.id}</Label>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="name">{user?.name}</Label>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="name">{user?.name}</Label>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
+      </Suspense>
     );
   else return <></>;
 };
