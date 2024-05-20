@@ -32,7 +32,7 @@ const Page = () => {
             .select("*")
             .eq("id", params.get("id"))
             .eq("name", params.get("name"))
-            .neq("checked", true)
+            // .neq("checked", true)
             .maybeSingle();
           setUser(data);
           toast.dismiss(toastId);
@@ -43,12 +43,21 @@ const Page = () => {
             //   .update({ checked: true })
             //   .eq("id", data.id)
             //   .select();
+            toast.error("잘못된 정보입니다.");
+            push("/");
+          }
+          if (data.checked) {
+            // await supabase
+            //   .from("users")
+            //   .update({ checked: true })
+            //   .eq("id", data.id)
+            //   .select();
             toast.error("이미 수령하였습니다.");
             push("/");
           }
         }
       } catch (error) {
-        toast.error("잘못된 접근입니다.");
+        // toast.error("잘못된 접근입니다.");
       }
     };
 
