@@ -105,7 +105,7 @@ const Page = () => {
 
                         const result = await supabase
                           .from("users")
-                          .update({ checked: true })
+                          .update({ checked: true, checkedTime: new Date() })
                           .eq("id", user.id);
 
                         toast.dismiss(toastId);
