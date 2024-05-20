@@ -32,7 +32,7 @@ const Page = () => {
             .select("*")
             .eq("id", params.get("id"))
             .eq("name", params.get("name"))
-            // .neq("checked", true)
+            .neq("checked", true)
             .maybeSingle();
           setUser(data);
           toast.dismiss(toastId);
