@@ -32,7 +32,7 @@ const Page = () => {
             .select("*")
             .eq("id", params.get("id"))
             .eq("name", params.get("name"))
-            .neq("checked", true)
+            // .neq("checked", true)
             .maybeSingle();
           setUser(data);
           toast.dismiss(toastId);
@@ -82,23 +82,31 @@ const Page = () => {
         <div>
           <div className="absolute inset-0 flex items-center justify-center">
             <Card className="mx-auto min-w-72 max-w-lg text-center">
-              <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl font-bold">이벤트</CardTitle>
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold">
+                  Kia&apos;s Birthday Cafe
+                </CardTitle>
+                <Label className="text-md !mt-2">인증 되었습니다.</Label>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="id">
-                      사원번호 : <b>{user?.id}</b>
+                      사번 : <b>{user?.id}</b>
                     </Label>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="name">
-                      성함 : <b>{user?.name}</b>
+                      이름 : <b>{user?.name}</b>
+                    </Label>
+                  </div>
+                  <div className="!mt-8">
+                    <Label className="font-bold text-gray-900">
+                      본 화면을 주문시 현장 Staff에게 보여주세요.
                     </Label>
                   </div>
                   <Button
-                    className="w-full"
+                    className="w-full py-7"
                     onClick={async () => {
                       try {
                         const toastId = toast.loading("Loading...");
@@ -126,6 +134,8 @@ const Page = () => {
                     }}
                   >
                     수령 확인
+                    <br />
+                    (클릭 금지, 현장 Staff 확인용)
                   </Button>
                 </div>
               </CardContent>

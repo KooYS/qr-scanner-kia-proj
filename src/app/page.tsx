@@ -47,21 +47,25 @@ export default function Home() {
       <div className="absolute inset-0 flex items-center justify-center">
         <Card className="mx-auto min-w-72 max-w-lg m-8">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold">이벤트</CardTitle>
-            <CardDescription>사원번호와 성함을 입력해주세요.</CardDescription>
+            <CardTitle className="text-2xl font-bold">
+              Kia&apos;s Birthday Cafe
+            </CardTitle>
+            <CardDescription>
+              직원 인증을 위해 사번과 이름을 입력해주세요.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="id">사원번호</Label>
+                <Label htmlFor="id">사번</Label>
                 <Input id="id" required type="text" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="name">성함</Label>
+                <Label htmlFor="name">이름</Label>
                 <Input id="name" required type="text" />
               </div>
               <Button onClick={handleLoginBtn} className="w-full">
-                확인하기
+                인증하기
               </Button>
             </div>
           </CardContent>
