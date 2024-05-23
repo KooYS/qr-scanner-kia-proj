@@ -37,7 +37,10 @@ const Page = () => {
           .from("users")
           .select("id", { count: "exact" })
           .eq("checked", false);
-        if (checkedUser && notCheckedUser) {
+        if (
+          typeof checkedUser === "number" &&
+          typeof notCheckedUser === "number"
+        ) {
           setStatus({
             checkedUser,
             notCheckedUser,
