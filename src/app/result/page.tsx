@@ -146,14 +146,10 @@ const Page = () => {
                         ) {
                           toast.success("수령을 완료했습니다.");
                           push("/");
-                        } else {
-                          toast.error(
-                            `${user.name}(${user.id})님 에러가 발생했습니다. 다시 시도해주세요.`
-                          );
                         }
                       } catch (error) {
                         toast.error(
-                          `${user.id}님 에러가 발생했습니다. 다시 시도해주세요.`
+                          `${user.name}(${user.id})님 에러가 발생했습니다. 다시 시도해주세요.`
                         );
                       }
                     }}
