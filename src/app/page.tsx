@@ -12,6 +12,7 @@ import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import React from "react";
 
 export default function Home() {
   const { push } = useRouter();
@@ -41,6 +42,10 @@ export default function Home() {
 
     push(`/result?id=${id}&name=${name}`);
   };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>

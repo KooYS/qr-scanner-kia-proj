@@ -20,6 +20,13 @@ const Page = () => {
   const supabase = createClientComponentClient();
   const [user, setUser] = React.useState<any>(null);
   const { push } = useRouter();
+
+  const getKoreaTime = React.useCallback((date: Date) => {
+    const offset = 1000 * 60 * 60 * 9;
+    const koreaNow = new Date(date.getTime() + offset);
+    return koreaNow.toISOString().replace("T", " ").split(".")[0];
+  }, []);
+
   const initialized = React.useRef(false);
 
   React.useEffect(() => {
@@ -36,7 +43,6 @@ const Page = () => {
             .maybeSingle();
           setUser(data);
           toast.dismiss(toastId);
-          console.log(data);
           if (!data) {
             // await supabase
             //   .from("users")
@@ -52,7 +58,14 @@ const Page = () => {
             //   .update({ checked: true })
             //   .eq("id", data.id)
             //   .select();
-            toast.error("이미 수령하였습니다.");
+            toast.error(
+              `${data.name}님 ( ${getKoreaTime(
+                new Date(data.checkedTime)
+              )} ) 에 이미 수령하였습니다.`,
+              {
+                duration: 7000,
+              }
+            );
             push("/");
           }
         }
